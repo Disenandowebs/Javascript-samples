@@ -1,0 +1,58 @@
+<!--
+            .:: Licencia Creative Commons Attribution ::.
+:: Este código puede ser utilizado y redistribuido sin fines de lucro, ::
+:: siempre y cuando se cite al autor debidamente. Para contactarse con ::
+:: el autor puede enviar un mensaje a disenandowebs@outlook.com o por  ::
+:: whatsapp al +59170616269.                                           ::
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón y prompt</title>
+    <!-- 
+    Este mismo código está disponible en un archivo .css separado.
+    Si no se quiere usar estilos en el mismo archivo HTML.
+    <link rel="stylesheet" href="btn-prompt.css"> 
+    -->
+    <style>
+        button {
+            font-family: "helvetica neue", helvetica, sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 2px solid rgb(200 200 0 / 60%);
+            background-color: rgb(0 217 217 / 60%);
+            color: rgb(100 0 0 / 100%);
+            box-shadow: 1px 1px 2px rgb(0 0 200 / 40%);
+            border-radius: 10px;
+            padding: 3px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button">Player 1: John</button>
+
+    <!--
+    Este mismo código está disponible en un archivo .js separado.
+    Si no se quiere ejecutar javascript en el mismo archivo HTML.
+    <script src="btn_prompt.js"></script>
+    -->
+    <script>
+        const button = document.querySelector("button");
+
+        button.addEventListener("click", updateName);
+
+        function updateName() {
+            const name = prompt("Ingrese un nuevo nombre");
+            button.textContent = `Player 1: ${name}`;
+        }
+    </script>
+</body>
+
+</html>

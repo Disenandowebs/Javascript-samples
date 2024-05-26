@@ -1,0 +1,33 @@
+body {
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+}
+div {
+  padding-bottom: 18px;
+  display: flex;
+  align-items: center;
+}
+input {
+  height: 30px;
+  font-size: 20px;
+  margin: 0px 15px;
+}
+button {
+  font-family: "helvetica neue", helvetica, sans-serif;
+  font-size: 23px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 2px solid #c4c4c299;
+  background-color: #14696999;
+  color: #f7e5e5;
+  box-shadow: 1px 1px 2px #0000c866;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+}

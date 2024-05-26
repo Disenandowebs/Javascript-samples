@@ -1,0 +1,86 @@
+<!--
+            .:: Licencia Creative Commons Attribution ::.
+:: Este código puede ser utilizado y redistribuido sin fines de lucro, ::
+:: siempre y cuando se cite al autor debidamente. Para contactarse con ::
+:: el autor puede enviar un mensaje a disenandowebs@outlook.com o por  ::
+:: whatsapp al +59170616269.                                           ::
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón e input</title>
+    <!-- 
+    Este mismo código está disponible en un archivo .css separado.
+    Si no se quiere usar estilos en el mismo archivo HTML.
+    <link rel="stylesheet" href="btn-input.css"> 
+    -->
+    <style>
+        body {
+            width: 100%;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 24px;
+        }
+        div {
+            padding-bottom: 18px;
+            display: flex;
+            align-items: center;
+        }
+        input {
+            height: 30px;
+            font-size: 20px;
+            margin: 0px 15px;
+        }
+        button {
+            font-family: "helvetica neue", helvetica, sans-serif;
+            font-size: 23px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 2px solid #c4c4c299;
+            background-color: #14696999;
+            color: #f7e5e5;
+            box-shadow: 1px 1px 2px #0000c866;
+            border-radius: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label>Ingrese un nombre</label>
+        <input type="text" id="nombre">
+    </div>
+    <button type="button">Player 1: John</button>
+
+    <!--
+    Este mismo código está disponible en un archivo .js separado.
+    Si no se quiere ejecutar javascript en el mismo archivo HTML.
+    <script src="btn_input.js"></script>
+    -->
+    <script>
+        const button = document.querySelector("button");
+        const nombre = document.getElementById("nombre");
+
+        button.addEventListener("click", updateName);
+
+        function updateName() {
+            // const name = prompt("Ingrese un nuevo nombre");
+            const valor = nombre.value;
+            button.textContent = `Player 1: ${valor}`;
+            nombre.value = "";
+        }
+    </script>
+</body>
+
+</html>
