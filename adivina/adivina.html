@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+  <head>
+    <meta charset="utf-8">
+    <title>Juego: Adivina el número</title>
+    <link rel="stylesheet" href="adivina.css">
+  </head>
+
+  <body>
+    <h1>Juego: Adivina el número</h1>
+
+    <p>🤖 He seleccionado un número aleatorio entre 1 y 100. Tu misión es adivinar cuál es en 10 turnos o menos. Cómo pista te avisaré si el número que diste está por debajo o por encima del número que escogí.</p>
+
+    <div class="form">
+      <label for="guessField">Ingresa un número: </label>
+      <input type="number" min="1" max="100" required id="guessField" class="guessField">
+      <input type="submit" value="Submit guess" class="guessSubmit">
+    </div>
+
+    <div class="resultParas">
+      <p class="guesses"></p>
+      <p class="lastResult"></p>
+      <p class="lowOrHi"></p>
+    </div>
+
+    <script src="adivina-min.js">
+
+      // Crea las variables y constantes para almacenar datos.
+
+      // Crea la función checkGuess() que maneje todo el proceso de dar números y adivinar.
+
+      // Crea la función setGameOver() que define el comportamiento del juego si se termina el juego.
+
+      // Crea la función resetGame() que reinicia toda la pantalla para empezar nuevamente.
+
+    </script>
+  </body>
+</html>
