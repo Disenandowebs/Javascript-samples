@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Switch</title>
+</head>
+
+<body>
+    <label for="weather">Seleccione el tipo de clima hoy:</label>
+    <select id="weather">
+        <option value="">--Selecciona uno--</option>
+        <option value="sunny">Soleado</option>
+        <option value="rainy">Lluvioso</option>
+        <option value="snowing">Nevando</option>
+        <option value="overcast">Nublado</option>
+    </select>
+
+    <p></p>
+
+</body>
+
+<script>
+    let select = document.querySelector("select");
+    let para = document.querySelector("p");
+
+    select.addEventListener("change", setWeather);
+
+    function setWeather() {
+        let choice = select.value;
+
+        switch (choice) {
+            case "sunny":
+                para.textContent =
+                    "Afuera hoy hace sol y es agradable. ¡Usa pantalones cortos! Ve a la playa o al parque y tómate un helado.";
+                break;
+            case "rainy":
+                para.textContent =
+                    "Afuera llueve; llévate un impermeable y un paraguas y no te quedes fuera mucho tiempo.";
+                break;
+            case "snowing":
+                para.textContent =
+                    "La nieve está cayendo, ¡está helada! Lo mejor es quedarse en casa con una taza de chocolate caliente o ir a construir un muñeco de nieve.";
+                break;
+            case "overcast":
+                para.textContent =
+                    "No llueve, pero el cielo está gris y sombrío; Podría cambiar en cualquier momento, así que lleva un impermeable por si acaso.";
+                break;
+            default:
+                para.textContent = "";
+        }
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operador ternario</title>
+</head>
+
+<body>
+    <label for="theme">Seleccione el tema:</label>
+    <select id="theme">
+        <option value="white">Blanco</option>
+        <option value="black">Negro</option>
+    </select>
+
+    <h1>Este es mi sitio web</h1>
+
+</body>
+
+<script>
+    let select = document.querySelector("select");
+    let html = document.querySelector("html");
+    document.body.style.padding = "10px";
+
+    function update(bgColor, textColor) {
+        html.style.backgroundColor = bgColor;
+        html.style.color = textColor;
+    }
+
+    select.onchange = function () {
+        select.value === "black"
+            ? update("black", "white")
+            : update("white", "black");
+    };
+
+</script>
+
+</html>
