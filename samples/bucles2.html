@@ -1,0 +1,53 @@
+<!--
+    Este código calcula los cuadrados de los números del 1 al 9 y escribe el resultado. El núcleo del código es el bucle for que realiza el cálculo.
+
+Desglosemos la línea for (let i = 1; i < 10; i++) en sus tres partes:
+
+let i = 1: la variable del contador, i, comienza en 1. Tenga en cuenta que tenemos que usar let para el contador, porque lo estamos reasignando cada vez que damos la vuelta al bucle.
+i < 10: sigue dando la vuelta al bucle mientras i sea menor que 10.
+i++: añade uno a i cada vez que recorras el bucle.
+Dentro del bucle, calculamos el cuadrado del valor actual de i, es decir: i * i. Creamos una cadena que expresa el cálculo que realizamos y el resultado, y añadimos esta cadena al texto de salida. También añadimos \n, por lo que la siguiente cadena que añadamos comenzará en una nueva línea. De manera que:
+
+Durante la primera ejecución, i = 1, por lo que añadiremos 1 x 1 = 1.
+Durante la segunda ejecución, i = 2, por lo que añadiremos 2 x 2 = 4.
+Y así sucesivamente...
+Cuando i sea igual a 10, dejaremos de ejecutar el bucle y pasaremos directamente al siguiente código debajo del bucle, imprimiendo el mensaje ¡Finalizado! en una nueva línea.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de cuadrados</title>
+</head>
+
+<body>
+    <button id="calculate">Calcular</button>
+    <button id="clear">Borrar</button>
+    <pre id="results"></pre>
+
+</body>
+
+<script>
+    const results = document.querySelector("#results");
+
+    function calculate() {
+        for (let i = 1; i < 10; i++) {
+            const newResult = `${i} x ${i} = ${i * i}`;
+            results.textContent += `${newResult}\n`;
+        }
+        results.textContent += "\n¡Finalizado!";
+    }
+
+    const calculateBtn = document.querySelector("#calculate");
+    const clearBtn = document.querySelector("#clear");
+
+    calculateBtn.addEventListener("click", calculate);
+    clearBtn.addEventListener("click", () => (results.textContent = ""));
+
+</script>
+
+</html>
