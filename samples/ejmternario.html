@@ -1,3 +1,10 @@
+<!--
+    El siguiente ejemplo muestra un selector de tema simple donde el estilo del sitio se aplica utilizando un operador ternario.
+    Aquí tenemos un elemento <select> para elegir un tema (blanco o negro), más un simple (black or white), plus a simple <h1> para mostrar el título de un sitio web. También tenemos una función llamada update(), que toma dos colores como parámetros (entradas). El color de fondo del sitio web se establece en el primer color proporcionado y el color del texto se establece en el segundo color proporcionado.
+
+Finalmente, también tenemos un detector de eventos onchange que sirve para ejecutar una función que contiene un operador ternario. Comienza con una condición de prueba — select.value === 'black'. Si esto devuelve true, ejecutamos la función update() con parámetros de blanco y negro, lo que significa que terminamos con un color de fondo negro y un color de texto blanco. Si devuelve false, ejecutamos las función update() con parámetros de blanco y negro, lo que significa que el color del sitio está invertido.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
