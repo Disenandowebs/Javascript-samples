@@ -15,13 +15,162 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuenta regresiva</title>
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+
+        h2 {
+            font-size: 16px;
+        }
+
+        .a11y-label {
+            margin: 0;
+            text-align: right;
+            font-size: 0.7rem;
+            width: 98%;
+        }
+
+        body {
+            margin: 10px;
+            background: #f5f9fa;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <h2>Salida en vivo</h2>
+    <div class="output" style="height: 410px;overflow: auto;"></div>
+
+    <h2>Código editable</h2>
+    <p class="a11y-label">
+        Pulse Esc para alejar el foco del área de código (Tab inserta un carácter de
+        tabulación).
+    </p>
+    <textarea id="code" class="playable-code" style="height: 300px;width: 95%">
+let output = document.querySelector('.output');
+output.innerHTML = '';
+
+// let i = 10;
+
+// const para = document.createElement('p');
+// para.textContent = ;
+// output.appendChild(para);
+</textarea>
+
+    <div class="playable-buttons">
+        <input id="reset" type="button" value="Restablecer" />
+        <input id="solution" type="button" value="Mostrar solución" />
+    </div>
+
 </body>
+
+<script>
+    const textarea = document.getElementById("code");
+    const reset = document.getElementById("reset");
+    const solution = document.getElementById("solution");
+    let code = textarea.value;
+    let userEntry = textarea.value;
+
+    function updateCode() {
+        eval(textarea.value);
+    }
+
+    reset.addEventListener("click", function () {
+        textarea.value = code;
+        userEntry = textarea.value;
+        solutionEntry = jsSolution;
+        solution.value = "Mostrar solución";
+        updateCode();
+    });
+
+    solution.addEventListener("click", function () {
+        if (solution.value === "Mostrar solución") {
+            textarea.value = solutionEntry;
+            solution.value = "Ocultar solución";
+        } else {
+            textarea.value = userEntry;
+            solution.value = "Mostrar solución";
+        }
+        updateCode();
+    });
+
+    let jsSolution = `const output = document.querySelector('.output');
+output.innerHTML = '';
+
+let i = 10;
+
+while (i >= 0) {
+  const para = document.createElement('p');
+  if (i === 10) {
+    paragraphtextContent = \`Cuenta atrás \${i}\`;
+  } else if (i === 0) {
+    para.textContent = 'Blast off!';
+  } else {
+    para.textContent = i;
+  }
+
+  output.appendChild(para);
+
+  i--;
+}`;
+
+    let solutionEntry = jsSolution;
+
+    textarea.addEventListener("input", updateCode);
+    window.addEventListener("load", updateCode);
+
+    // detener la tabulación de la tecla tabulación fuera del área de texto y
+    // hacer que escriba una tabulación en la posición del cursor en su lugar
+
+    textarea.onkeydown = function (e) {
+        if (e.keyCode === 9) {
+            e.preventDefault();
+            insertAtCaret("\t");
+        }
+
+        if (e.keyCode === 27) {
+            textarea.blur();
+        }
+    };
+
+    function insertAtCaret(text) {
+        const scrollPos = textarea.scrollTop;
+        let caretPos = textarea.selectionStart;
+        const front = textarea.value.substring(0, caretPos);
+        const back = textarea.value.substring(
+            textarea.selectionEnd,
+            textarea.value.length,
+        );
+
+        textarea.value = front + text + back;
+        caretPos += text.length;
+        textarea.selectionStart = caretPos;
+        textarea.selectionEnd = caretPos;
+        textarea.focus();
+        textarea.scrollTop = scrollPos;
+    }
+
+    // Actualizar el userCode guardado cada vez que el usuario actualice el código de área de texto
+
+    textarea.onkeyup = () => {
+        // Solo queremos guardar el estado cuando se muestra el código de usuario,
+        // no la solución, para que la solución no se guarde sobre el código de usuario
+        if (solution.value === "Mostrar solución") {
+            userEntry = textarea.value;
+        } else {
+            solutionEntry = textarea.value;
+        }
+
+        updateCode();
+    };
+
+</script>
+
 </html>
