@@ -1,3 +1,10 @@
+<!--
+  1. En este caso, la entrada debe ser un número (num). Al bucle for se le da un contador que comienza en 1 (ya que no estamos interesados en 0 en este caso), una condición de salida que dice que el bucle se detendrá cuando el contador se vuelva más grande que la entrada num, y un iterador que suma 1 al contador cada vez.
+  2. Dentro del bucle, encontramos la raíz cuadrada de cada número usando Math.sqrt(i), luego verificamos si la raíz cuadrada es un entero probando si es igual a sí misma cuando se ha redondeado al entero más cercano (esto es lo que Math.floor() hace al número que se pasa).
+  3. Si la raíz cuadrada y la raíz cuadrada redondeada hacia abajo no son iguales entre sí (!==), significa que la raíz cuadrada no es un número entero, por lo que no nos interesa. En tal caso, usamos la instrucción continue para saltar a la siguiente iteración de bucle sin registrar el número en ninguna parte.
+  4. Si la raíz cuadrada es un número entero, omitimos por completo el bloque if, por lo que no se ejecuta la instrucción continue; en su lugar, concatenamos el valor i actual más un espacio al final del contenido del párrafo.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
