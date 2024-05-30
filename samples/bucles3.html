@@ -1,3 +1,14 @@
+<!--
+    Digamos que queríamos buscar a través de una serie de contactos y números de teléfono y devolver solo el número que queríamos encontrar. Primero, un HTML simple: un <input> de texto que nos permite ingresar un nombre para buscar, un elemento <button> para enviar una búsqueda y un elemento <p> para mostrar los resultados en:
+    1. En primer lugar, tenemos algunas definiciones de variables: tenemos una variedad de información de contacto, y cada elemento es una cadena que contiene un nombre y un número de teléfono separados por dos puntos.
+    2. A continuación, adjuntamos un detector de eventos al botón (btn) para que cuando se pulse se ejecute algún código para realizar la búsqueda y devolver los resultados.
+    3. Almacenamos el valor introducido en la entrada de texto en una variable llamada searchName, antes de vaciar la entrada de texto y volver a enfocarla, listos para la siguiente búsqueda. Tenga en cuenta que también ejecutamos el método toLowerCase() en la cadena, de modo que las búsquedas no distingan entre mayúsculas y minúsculas.
+    4. Ahora pasemos a la parte interesante, el bucle for...of:
+    i. Dentro del bucle, primero dividimos el contacto actual en el carácter de dos puntos y almacenamos los dos valores resultantes en un arreglo llamado splitContact.
+    ii. Luego usamos una instrucción condicional para probar si splitContact [0] (el nombre del contacto, nuevamente en minúsculas con toLowerCase()) es igual al searchName ingresado. Si es así, introducimos una cadena en el párrafo para informar cuál es el número del contacto y usamos break para finalizar el bucle.
+    5. Después del bucle, verificamos si configuramos un contacto y, de lo contrario, configuramos el texto del párrafo como "Contacto no encontrado".
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
