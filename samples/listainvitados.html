@@ -20,13 +20,163 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de invitados</title>
 </head>
+<style>
+    html {
+        font-family: sans-serif;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .a11y-label {
+        margin: 0;
+        text-align: right;
+        font-size: 0.7rem;
+        width: 98%;
+    }
+
+    body {
+        margin: 10px;
+        background: #f5f9fa;
+    }
+</style>
+
 <body>
-    
+    En este ejercicio, queremos que tomes una lista de nombres almacenados en un arreglo y los pongas en una lista de
+    invitados. Pero no es tan fácil: ¡no queremos dejar entrar a Phil y Lola porque son codiciosos y groseros, y siempre
+    comen toda la comida! Tenemos dos listas, una para que los huéspedes la admitan y otra para que los huéspedes la
+    rechacen.
+
+    En concreto, queremos:
+
+    Escribe un bucle que itere a través del arreglo people.
+    Durante cada iteración de bucle, compruebe si el elemento del arreglo actual es igual a "Phil" o "Lola" utilizando
+    una instrucción condicional:
+    Si es así, concatene el elemento del arreglo al final de textContent del párrafo refused, seguido de una coma y un
+    espacio.
+    Si no es así, concatene el elemento del arreglo hasta el final del textContent del párrafo admitted, seguido de una
+    coma y un espacio.
+    Ya te hemos proporcionado:
+
+    refused.textContent +=: los inicios de una línea que concatenará algo al final de refused.textContent.
+    admitted.textContent +=; los inicios de una línea que concatenará algo al final de admitted.textContent.
+    Pregunta de bonificación adicional: después de completar las tareas anteriores con éxito, te quedarán dos listas de
+    nombres, separadas por comas, pero estarán desordenadas: habrá una coma al final de cada una. ¿Puedes averiguar cómo
+    escribir líneas que corten la última coma en cada caso y añadir un punto al final? Consulta el artículo Métodos de
+    cadenas útiles para obtener ayuda.
+
+    Si comete un error, siempre puede restablecer el ejemplo con el botón "Restablecer". Si te quedas realmente
+    atascado, pulsa "Mostrar solución" para ver una solución.
 </body>
+
+<script>
+    const textarea = document.getElementById("code");
+    const reset = document.getElementById("reset");
+    const solution = document.getElementById("solution");
+    let code = textarea.value;
+    let userEntry = textarea.value;
+
+    function updateCode() {
+        eval(textarea.value);
+    }
+
+    reset.addEventListener("click", function () {
+        textarea.value = code;
+        userEntry = textarea.value;
+        solutionEntry = jsSolution;
+        solution.value = "Mostrar solución";
+        updateCode();
+    });
+
+    solution.addEventListener("click", function () {
+        if (solution.value === "Mostrar solución") {
+            textarea.value = solutionEntry;
+            solution.value = "Ocultar solución";
+        } else {
+            textarea.value = userEntry;
+            solution.value = "Mostrar solución";
+        }
+        updateCode();
+    });
+
+    const jsSolution = `
+const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+
+const admitted = document.querySelector('.admitted');
+const refused = document.querySelector('.refused');
+
+admitted.textContent = 'Admitir: ';
+refused.textContent = 'Rechazar: ';
+
+for (const person of people) {
+  if (person === 'Phil' || person === 'Lola') {
+    refused.textContent += \`\${person}, \`;
+  } else {
+    admitted.textContent += \`\${person}, \`;
+  }
+}
+
+refused.textContent = refused.textContent.slice(0,refused.textContent.length-2) + '.';
+admitted.textContent = admitted.textContent.slice(0,admitted.textContent.length-2) + '.';`;
+
+    let solutionEntry = jsSolution;
+
+    textarea.addEventListener("input", updateCode);
+    window.addEventListener("load", updateCode);
+
+    // detener la tabulación de la tecla tabulación fuera del área de texto y
+    // hacer que escriba una tabulación en la posición del cursor en su lugar
+
+    textarea.onkeydown = function (e) {
+        if (e.keyCode === 9) {
+            e.preventDefault();
+            insertAtCaret("\t");
+        }
+
+        if (e.keyCode === 27) {
+            textarea.blur();
+        }
+    };
+
+    function insertAtCaret(text) {
+        const scrollPos = textarea.scrollTop;
+        let caretPos = textarea.selectionStart;
+        const front = textarea.value.substring(0, caretPos);
+        const back = textarea.value.substring(
+            textarea.selectionEnd,
+            textarea.value.length,
+        );
+
+        textarea.value = front + text + back;
+        caretPos += text.length;
+        textarea.selectionStart = caretPos;
+        textarea.selectionEnd = caretPos;
+        textarea.focus();
+        textarea.scrollTop = scrollPos;
+    }
+
+    // Actualizar el userCode guardado cada vez que el usuario actualice el código de área de texto
+
+    textarea.onkeyup = () => {
+        // Solo queremos guardar el estado cuando se muestra el código de usuario,
+        // no la solución, para que la solución no se guarde sobre el código de usuario
+        if (solution.value === "Mostrar solución") {
+            userEntry = textarea.value;
+        } else {
+            solutionEntry = textarea.value;
+        }
+
+        updateCode();
+    };
+
+</script>
+
 </html>
